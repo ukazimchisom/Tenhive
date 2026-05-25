@@ -102,7 +102,7 @@ export default function HomePage() {
             <div className="absolute h-[250px] w-[250px] sm:h-[350px] sm:w-[350px] lg:h-[500px] lg:w-[500px] rounded-full bg-orange-100 blur-3xl" />
 
             <Image
-              src="/hero-image-3.png"
+              src="/hero-image.png"
               alt="Shopping Girl"
               width={550}
               height={650}

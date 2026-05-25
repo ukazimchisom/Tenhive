@@ -5,6 +5,9 @@ import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import type { Profile } from "@/types/database";
 
+// ✅ Create once, outside the hook
+const supabase = createClient();
+
 interface UseUserReturn {
   user: User | null;
   profile: Profile | null;
@@ -18,9 +21,6 @@ export function useUser(): UseUserReturn {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const supabase = createClient();
-
-    // Get the initial session
     const getUser = async () => {
       try {
         const {
@@ -35,7 +35,6 @@ export function useUser(): UseUserReturn {
             .select("*")
             .eq("id", user.id)
             .single();
-
           setProfile(profile);
         }
       } finally {
@@ -45,7 +44,6 @@ export function useUser(): UseUserReturn {
 
     getUser();
 
-    // Listen for auth state changes (login/logout)
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
@@ -57,7 +55,6 @@ export function useUser(): UseUserReturn {
           .select("*")
           .eq("id", session.user.id)
           .single();
-
         setProfile(profile);
       } else {
         setProfile(null);
@@ -66,9 +63,7 @@ export function useUser(): UseUserReturn {
       setIsLoading(false);
     });
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   return {
