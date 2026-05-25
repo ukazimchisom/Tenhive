@@ -33,23 +33,14 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full  bg-white/80  backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-white"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3z" />
-                <path d="M16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-              </svg>
-            </div>
-            <span className="font-bold text-lg text-gray-900">ShopWave</span>
+            <span className="font-bold text-lg text-gray-900">
+              Ten<span className="text-orange-500">hive</span>
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -60,7 +51,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive(link.href)
-                    ? "bg-blue-50 text-blue-600"
+                    ? "bg-blue-50 text-orange-500"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                 }`}
               >
@@ -84,7 +75,7 @@ export default function Navbar() {
                   onClick={() => setUserMenuOpen((prev) => !prev)}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
                 >
-                  <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                     {profile?.full_name?.[0]?.toUpperCase() ??
                       user.email?.[0]?.toUpperCase() ??
                       "U"}
@@ -172,7 +163,7 @@ export default function Navbar() {
                         <Link
                           href="/admin"
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-blue-600 hover:bg-blue-50 transition-colors"
+                          className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-orange-500 hover:bg-orange-50 transition-colors"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -229,13 +220,13 @@ export default function Navbar() {
               <div className="hidden sm:flex items-center gap-2">
                 <Link
                   href="/login"
-                  className="px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-orange-100 transition-colors"
                 >
                   Sign in
                 </Link>
                 <Link
                   href="/signup"
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors"
                 >
                   Get started
                 </Link>
@@ -293,7 +284,7 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive(link.href)
-                    ? "bg-blue-50 text-blue-600"
+                    ? "bg-orange-50 text-orange-500"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
@@ -313,7 +304,7 @@ export default function Navbar() {
                 <Link
                   href="/signup"
                   onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-center"
+                  className="block px-4 py-2.5 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors text-center"
                 >
                   Get started
                 </Link>

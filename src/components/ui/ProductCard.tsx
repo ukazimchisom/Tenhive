@@ -23,13 +23,14 @@ export default function ProductCard({ product }: ProductCardProps) {
       className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-md hover:border-gray-200 transition-all duration-200 flex flex-col"
     >
       {/* Image */}
-      <div className="relative aspect-square overflow-hidden bg-gray-50">
+      <div className="relative aspect-square overflow-hidden bg-orange-50">
         <Image
           src={product.thumbnail}
           alt={product.title}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover group-hover:scale-105 transition-transform duration-300"
+          priority
         />
         {hasDiscount && (
           <span className="absolute top-2 left-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">
@@ -73,7 +74,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
 
-          <span className="px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+          <span className="px-3 py-1.5 text-xs font-semibold text-orange-600 bg-orange-100 rounded-lg group-hover:bg-orange-600 group-hover:text-white transition-colors">
             View
           </span>
         </div>

@@ -7,6 +7,7 @@ import {
   getProductsByCategory,
   getCategories,
 } from "@/lib/api/products";
+
 import type { Product, Category } from "@/types/products";
 
 interface UseProductsReturn {
@@ -23,15 +24,14 @@ interface UseProductsReturn {
   hasMore: boolean;
 }
 
-const PAGE_SIZE = 20;
-
-export function useProducts(): UseProductsReturn {
+export function useProducts(limit = 20, initialSkip = 0): UseProductsReturn {
+  const PAGE_SIZE = limit;
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
   const [total, setTotal] = useState(0);
-  const [skip, setSkip] = useState(0);
+  const [skip, setSkip] = useState(initialSkip);
   const [query, setQueryState] = useState("");
   const [selectedCategory, setSelectedCategoryState] = useState("");
 

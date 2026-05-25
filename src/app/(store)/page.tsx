@@ -1,114 +1,178 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
+import {
+  AlarmClock,
+  Headphones,
+  ShieldCheck,
+  Truck,
+  Medal,
+  Tag,
+  RefreshCcw,
+  Smile,
+} from "lucide-react";
+import ProductCard from "@/components/ui/ProductCard";
+import { useProducts } from "@/hooks/useProduct";
+import Button from "@/components/ui/Button";
+
+const features = [
+  {
+    title: "Top Quality",
+    description: "Premium products you can trust.",
+    icon: Medal,
+  },
+  {
+    title: "Best Prices",
+    description: "Affordable deals on every product.",
+    icon: Tag,
+  },
+  {
+    title: "Easy Returns",
+    description: "Hassle-free returns within 30 days.",
+    icon: RefreshCcw,
+  },
+  {
+    title: "Happy Customers",
+    description: "Thousands of satisfied shoppers worldwide.",
+    icon: Smile,
+  },
+];
 
 export default function HomePage() {
+  const { products } = useProducts(8, 8);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
-      <section className="py-20 text-center">
-        <span className="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">
-          New arrivals every week
-        </span>
-        <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-          Shop smarter with <span className="text-blue-600">Tenhive</span>
-        </h1>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto mb-10">
-          Discover thousands of products at unbeatable prices. Fast delivery,
-          easy returns, and a seamless checkout experience.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/products"
-            className="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
-          >
-            Browse Products
-          </Link>
-          <Link
-            href="/signup"
-            className="px-8 py-3.5 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors"
-          >
-            Create Account
-          </Link>
+    <main className="min-h-screen bg-[#faf7f4] text-gray-900 mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-2">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-r from-[#fff6ef] to-[#fffaf7]" />
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-4">
+          <div className="sm:mb-27 text-center lg:text-left">
+            <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+              Shop More,
+              <br />
+              <span className="text-orange-500">Save More!</span>
+            </h1>
+
+            <p className="mt-5 max-w-xl text-base leading-7 text-gray-600 sm:text-lg sm:leading-8 lg:mx-0 mx-auto">
+              Discover amazing products at unbeatable prices.
+              <br className="hidden sm:block" />
+              Quality you&apos;ll love, deals you&apos;ll adore.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+              <Button size="lg">
+                <Link href="/products">Shop Now</Link>
+              </Button>
+
+              <Button variant="outline" size="md">
+                <Link href="/signup">Create Account</Link>
+              </Button>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="flex items-center gap-3 justify-center lg:justify-start">
+                <Truck className="text-orange-500" />
+                <div>
+                  <h4 className="font-bold">Free Shipping</h4>
+                  <p className="text-sm text-gray-500">Orders over $50</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 justify-center lg:justify-start">
+                <ShieldCheck className="text-orange-500" />
+                <div>
+                  <h4 className="font-bold">Secure Payment</h4>
+                  <p className="text-sm text-gray-500">100% Protected</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 justify-center lg:justify-start">
+                <Headphones className="text-orange-500" />
+                <div>
+                  <h4 className="font-bold">24/7 Support</h4>
+                  <p className="text-sm text-gray-500">Always Available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative flex justify-center mt-8 lg:mt-0">
+            <div className="absolute h-[250px] w-[250px] sm:h-[350px] sm:w-[350px] lg:h-[500px] lg:w-[500px] rounded-full bg-orange-100 blur-3xl" />
+
+            <Image
+              src="/hero-image-3.png"
+              alt="Shopping Girl"
+              width={550}
+              height={650}
+              className="relative z-10 h-auto w-[90%] max-w-[500px] object-contain"
+              priority
+            />
+          </div>
         </div>
       </section>
 
-      {/* Feature Highlights */}
-      <section className="py-16 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-gray-100">
-        {[
-          {
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                />
-              </svg>
-            ),
-            title: "Free Shipping",
-            desc: "On all orders over $50.",
-          },
-          {
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
-            ),
-            title: "Easy Returns",
-            desc: "30-day hassle-free return policy.",
-          },
-          {
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                />
-              </svg>
-            ),
-            title: "Secure Checkout",
-            desc: "Your payment info is always safe.",
-          },
-        ].map((feature) => (
-          <div
-            key={feature.title}
-            className="flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-gray-100 shadow-sm"
-          >
-            <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
-              {feature.icon}
-            </div>
-            <h3 className="font-semibold text-gray-900 mb-1">
-              {feature.title}
-            </h3>
-            <p className="text-sm text-gray-500">{feature.desc}</p>
-          </div>
-        ))}
+      <section className="mx-auto mb-6 max-w-7xl px-4 sm:px-6">
+        <div className="grid gap-6 rounded-2xl bg-white p-6 shadow-xl sm:p-8 md:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
+              <div key={feature.title} className="text-center md:text-left">
+                <h3 className="flex items-center justify-center gap-2 text-lg font-bold sm:text-xl md:justify-start">
+                  <Icon className="h-5 w-5 text-orange-500" />
+                  {feature.title}
+                </h3>
+
+                <p className="mt-2 text-sm text-gray-500">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </section>
-    </div>
+      <section className="mb-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+        <div className="flex justify-center w-full">
+          <Button className="mt-8">
+            <Link href="/products">View All Products</Link>
+          </Button>
+        </div>
+      </section>
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 rounded-[40px] bg-gradient-to-r from-orange-100 to-orange-50 p-10 lg:flex-row lg:p-16">
+          <div>
+            <span className="flex gap-3 font-bold uppercase text-orange-500">
+              <AlarmClock />
+              Limited Time Offer
+            </span>
+
+            <h2 className="mt-5 text-5xl font-black leading-tight">
+              Special Deals Up To <span className="text-orange-500">50%</span>
+              OFF
+            </h2>
+            <p>Hurry! Grab the best deal before they&apos;re gone.</p>
+            <button className="mt-8 rounded-xl bg-orange-500 px-8 py-4 font-semibold text-white">
+              Shop Now
+            </button>
+          </div>
+
+          <Image
+            src="/shopping-cart-promo.png"
+            alt="shopping cart"
+            width={400}
+            height={400}
+            className="h-[300px] w-auto rounded-3xl  object-contain"
+            priority
+          />
+        </div>
+      </section>
+    </main>
   );
 }
