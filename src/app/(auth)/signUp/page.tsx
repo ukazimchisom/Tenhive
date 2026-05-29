@@ -11,6 +11,7 @@ import { signupSchema, type SignupFormData } from "@/utils/validation";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Image from "next/image";
+import { sendWelcomeEmail } from "@/lib/emailjs";
 
 export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +51,11 @@ export default function SignupPage() {
         }
         return;
       }
+
+      await sendWelcomeEmail({
+        to_name: data.full_name,
+        to_email: data.email,
+      });
 
       setEmailSent(true);
       toast.success("Account created! Please check your email.");
