@@ -40,7 +40,7 @@ export default function OrdersPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-white">My Orders</h1>
+        <h1 className="text-2xl font-bold text-black mt-3">My Orders</h1>
         <p className="text-sm text-gray-600 mt-1">
           {orders.length} order{orders.length !== 1 ? "s" : ""} total
         </p>

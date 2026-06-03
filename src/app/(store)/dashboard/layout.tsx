@@ -76,13 +76,13 @@ export default function DashboardLayout({
   const { profile, user } = useUser();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 bg-linear-to-r from-[#d3a17a] to-[#ecb89a]">
+    <div className="max-w-7xl mx-auto px-8 lg:pl-0 lg:min-h-screen bg-slate-50 rounded-2xl mt-5 lg:mt-0">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar */}
-        <aside className="lg:col-span-1">
-          <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm sticky top-24">
+        <aside className="lg:col-span-1 bg-white border-gray-100 p-5 shadow-sm sticky  lg:min-h-screen lg:w-64 left-0 border-r rounded-2xl lg:rounded-none mt-5 lg:mt-0">
+          <div className="flex flex-col">
             {/* User avatar */}
-            <div className="flex flex-col items-center text-center pb-5 border-b border-gray-100 mb-4">
+            <div className="flex flex-col items-center lg:items-start lg:pl-5 pb-5 border-b border-gray-100 mb-4">
               <div className="w-14 h-14 rounded-full bg-orange-600 flex items-center justify-center text-white text-xl font-bold mb-3">
                 {profile?.full_name?.[0]?.toUpperCase() ??
                   user?.email?.[0]?.toUpperCase() ??
@@ -124,7 +124,7 @@ export default function DashboardLayout({
         </aside>
 
         {/* Main content */}
-        <main className="lg:col-span-3">{children}</main>
+        <main className="lg:col-span-3 mb-5">{children}</main>
       </div>
     </div>
   );

@@ -110,7 +110,7 @@ export default function AdminOverviewPage() {
           <Link
             key={stat.label}
             href={stat.href}
-            className="bg-white border border-gray-200 rounded-2xl p-5 hover:border-gray-300 hover:bg-gray-100 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl"
+            className="bg-white border border-gray-200 rounded-2xl p-5 hover:border-gray-300 hover:bg-gray-100 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl flex flex-col items-center justify-center"
           >
             <div
               className={`w-40 h-7 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-lg mb-4`}
