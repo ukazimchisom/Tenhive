@@ -76,7 +76,7 @@ export default function DashboardLayout({
   const { profile, user } = useUser();
 
   return (
-    <div className="max-w-7xl mx-auto px-8 lg:pl-0 lg:min-h-screen bg-slate-50 rounded-2xl mt-5 lg:mt-0">
+    <div className="max-w-7xl mx-auto px-8 lg:pl-0 lg:min-h-screen bg-slate-100 rounded-2xl mt-5 lg:mt-0">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar */}
         <aside className="lg:col-span-1 bg-white border-gray-100 p-5 shadow-sm sticky  lg:min-h-screen lg:w-64 left-0 border-r rounded-2xl lg:rounded-none mt-5 lg:mt-0">

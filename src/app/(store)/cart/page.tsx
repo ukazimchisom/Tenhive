@@ -76,6 +76,7 @@ export default function CartPage() {
                     src={product.thumbnail}
                     alt={product.title}
                     fill
+                    sizes="96px"
                     className="object-cover hover:scale-105 transition-transform"
                   />
                 </div>

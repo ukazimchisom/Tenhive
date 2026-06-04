@@ -11,6 +11,7 @@ import { useCart } from "@/hooks/useCart";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import { ChevronLeft, Lock, ShieldCheck, TriangleAlert } from "lucide-react";
+import { formatCurrency } from "@/utils/format";
 
 export default function CheckoutClient() {
   const router = useRouter();
@@ -224,7 +225,7 @@ export default function CheckoutClient() {
                 ) : (
                   <>
                     <Lock className="h-5 w-5" strokeWidth={2} />
-                    Pay #{grandTotal.toFixed(2)} securely
+                    Pay {formatCurrency(grandTotal)} securely
                   </>
                 )}
               </Button>
@@ -247,6 +248,7 @@ export default function CheckoutClient() {
                       src={product.thumbnail}
                       alt={product.title}
                       fill
+                      sizes="56px"
                       className="object-cover"
                     />
                     <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
@@ -258,11 +260,11 @@ export default function CheckoutClient() {
                       {product.title}
                     </p>
                     <p className="text-xs text-gray-500 mt-0.5">
-                      #{unitPrice} × {quantity}
+                      {formatCurrency(unitPrice)} × {quantity}
                     </p>
                   </div>
                   <p className="text-sm font-semibold text-gray-900 flex-shrink-0">
-                    #{(unitPrice * quantity).toFixed(2)}
+                    {formatCurrency(unitPrice * quantity)}
                   </p>
                 </div>
               ))}
@@ -271,17 +273,19 @@ export default function CheckoutClient() {
             <div className="border-t border-gray-100 pt-4 space-y-2.5">
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Subtotal</span>
-                <span>#{totalPrice.toFixed(2)}</span>
+                <span>{formatCurrency(totalPrice)}</span>
               </div>
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Shipping</span>
                 <span className={shippingCost === 0 ? "text-green-600" : ""}>
-                  {shippingCost === 0 ? "Free" : `#${shippingCost.toFixed(2)}`}
+                  {shippingCost === 0
+                    ? "Free"
+                    : `#${formatCurrency(shippingCost)}`}
                 </span>
               </div>
               <div className="flex justify-between font-bold text-gray-900 text-base border-t border-gray-100 pt-3">
                 <span>Total</span>
-                <span>#{grandTotal.toFixed(2)}</span>
+                <span>{formatCurrency(grandTotal)}</span>
               </div>
             </div>
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Product } from "@/types/products";
 import { getDiscountedPrice } from "@/lib/api/products";
 import StarRating from "./StarRating";
+import { formatCurrency } from "@/utils/format";
 
 interface ProductCardProps {
   product: Product;
@@ -65,11 +66,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex items-center justify-between mt-3">
           <div className="flex flex-col">
             <span className="text-base font-bold text-gray-900">
-              ${discountedPrice}
+              {formatCurrency(discountedPrice)}
             </span>
             {hasDiscount && (
               <span className="text-xs text-gray-400 line-through">
-                ${product.price}
+                {formatCurrency(product.price)}
               </span>
             )}
           </div>

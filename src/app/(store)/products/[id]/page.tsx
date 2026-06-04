@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { getProductById, getDiscountedPrice } from "@/lib/api/products";
 import StarRating from "@/components/ui/StarRating";
 import AddToCartButton from "@/components/ui/AddToCartButton";
+import { formatCurrency } from "@/utils/format";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -39,7 +40,7 @@ export default async function ProductDetailPage({ params }: Props) {
     product.discountPercentage,
   );
   const hasDiscount = product.discountPercentage > 0;
-  const savings = (product.price - discountedPrice).toFixed(2);
+  const savings = Number((product.price - discountedPrice).toFixed(2));
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -70,8 +71,9 @@ export default async function ProductDetailPage({ params }: Props) {
               src={product.images[0] ?? product.thumbnail}
               alt={product.title}
               fill
-              className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
             />
             {hasDiscount && (
               <span className="absolute top-4 left-4 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
@@ -92,6 +94,7 @@ export default async function ProductDetailPage({ params }: Props) {
                     src={img}
                     alt={`${product.title} ${index + 1}`}
                     fill
+                    sizes="(max-width: 768px) 80px, 80px"
                     className="object-cover"
                   />
                 </div>
@@ -127,19 +130,19 @@ export default async function ProductDetailPage({ params }: Props) {
           {/* Price */}
           <div className="flex items-end gap-3 mb-2">
             <span className="text-4xl font-extrabold text-gray-900">
-              ${discountedPrice}
+              {formatCurrency(discountedPrice)}
             </span>
             {hasDiscount && (
               <span className="text-xl text-gray-400 line-through mb-1">
-                ${product.price}
+                {formatCurrency(product.price)}
               </span>
             )}
           </div>
 
           {hasDiscount && (
             <p className="text-sm text-green-600 font-medium mb-5">
-              You save ${savings} ({Math.round(product.discountPercentage)}%
-              off)
+              You save {formatCurrency(savings)} (
+              {Math.round(product.discountPercentage)}% off)
             </p>
           )}
 
