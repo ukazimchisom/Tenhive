@@ -93,17 +93,19 @@ export default function SignupPage() {
 
   return (
     <main>
-      <p className="text-right text-sm text-gray-500 mb-2">
-        Already have an account?
-        <Link
-          href="/login"
-          className="text-orange-500 font-medium hover:underline"
-        >
-          <Button variant="outline" size="sm" className="ml-2">
-            Sign in
-          </Button>
-        </Link>
-      </p>
+      <div className="hidden lg:block">
+        <p className="text-right text-sm text-gray-500 mb-2">
+          Already have an account?
+          <Link
+            href="/login"
+            className="text-orange-500 font-medium hover:underline"
+          >
+            <Button variant="outline" size="sm" className="ml-2">
+              Sign in
+            </Button>
+          </Link>
+        </p>
+      </div>
       <div className="w-full flex flex-1 items-center justify-center px-4 py-8 gap-8 ">
         <div className="flex-1 hidden md:block ">
           <Image
@@ -118,10 +120,10 @@ export default function SignupPage() {
 
         <div>
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-center text-2xl font-bold text-gray-900">
               Create Your Account
             </h1>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 mt-1 text-center">
               Join Tenhive and start shopping today!
             </p>
           </div>

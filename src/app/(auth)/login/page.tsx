@@ -59,7 +59,7 @@ export default function LoginPage() {
 
   return (
     <main>
-      <p className="text-right text-sm text-gray-500 mb-2">
+      <p className=" hidden lg:block text-right text-sm text-gray-500 mb-2">
         Don&apos;t have an account?
         <Link
           href="/signup"
